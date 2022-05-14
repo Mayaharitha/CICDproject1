@@ -1,6 +1,6 @@
 node{
    stage('SCM Checkout'){
-     git 'https://github.com/pavancse530/my-app.git'
+     git 'https://github.com/Mayaharitha/CICDproject1.git'
    }
    stage('Compile-Package'){
 
@@ -15,13 +15,13 @@ node{
 	        }
 	    }
    stage('Build Docker Image'){
-   sh 'docker build -t pavancse530/myweb:0.0.2 .'
+   sh 'docker build -t mayaharitha1/myweb:0.0.2 .'
    }
    stage('Docker Image Push'){
    withCredentials([string(credentialsId: 'dockerPass', variable: 'dockerPassword')]) {
-   sh "docker login -u pavancse530 -p ${dockerPassword}"
+   sh "docker login -u mayaharitha1 -p ${dockerPassword}"
     }
-   sh 'docker push pavancse530/myweb:0.0.2'
+   sh 'docker push mayaharitha1/myweb:0.0.2'
    }
    stage('Nexus Image Push'){
    sh "docker login -u admin -p admin123 3.110.204.26:8083"
